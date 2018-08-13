@@ -1,0 +1,16 @@
+logs/
+
+.idea/
+target/
+
+*.iws
+*.iml
+*.ipr
+
+
+.idea_modules/
+/out/
+
+.settings/
+.classpath
+.project
