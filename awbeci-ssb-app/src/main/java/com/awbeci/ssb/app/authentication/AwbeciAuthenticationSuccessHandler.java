@@ -1,6 +1,5 @@
 package com.awbeci.ssb.app.authentication;
 
-import com.awbeci.ssb.core.properties.SecurityProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -29,7 +28,7 @@ public class AwbeciAuthenticationSuccessHandler extends SavedRequestAwareAuthent
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
-
+        System.out.println("success");
         super.onAuthenticationSuccess(request, response, authentication);
     }
 }

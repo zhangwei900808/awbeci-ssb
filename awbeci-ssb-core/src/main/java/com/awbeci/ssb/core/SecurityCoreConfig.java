@@ -8,7 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@EnableConfigurationProperties(SecurityProperties.class)
+//@EnableConfigurationProperties(SecurityProperties.class)
 public class SecurityCoreConfig {
 
     @Bean

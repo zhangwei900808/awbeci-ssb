@@ -1,10 +1,7 @@
 package com.awbeci.ssb.app.authentication;
 
-import com.awbeci.ssb.core.properties.SecurityProperties;
-import com.awbeci.ssb.core.support.SimpleResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
@@ -27,6 +24,7 @@ public class AwbeciAuthenctiationFailureHandler extends SimpleUrlAuthenticationF
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                         AuthenticationException exception) throws IOException, ServletException {
 
+        System.out.println("----------faiule-------");
         super.onAuthenticationFailure(request, response, exception);
 
 

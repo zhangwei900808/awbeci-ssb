@@ -13,21 +13,30 @@
         <module>awbeci-ssb-app</module>
         <module>awbeci-ssb-api</module>
     </modules>
-
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
     <dependencyManagement>
         <dependencies>
-            <!-- Override Spring Data release train provided by Spring Boot -->
             <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-releasetrain</artifactId>
-                <version>Fowler-SR2</version>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.0.4.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.0.4.RELEASE</version>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>5.0.8.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -41,9 +50,4 @@
             </plugin>
         </plugins>
     </build>
-    <!--<parent>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-parent</artifactId>-->
-        <!--<version>2.0.3.RELEASE</version>-->
-    <!--</parent>-->
 </project>
