@@ -32,6 +32,7 @@ public class ApiUserDetailsService implements UserDetailsService {
      * @see org.springframework.security.core.userdetails.UserDetailsService#
      * loadUserByUsername(java.lang.String)
      */
+    // 这里的username 可以是username、mobile、email
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.info("表单登录用户名:" + username);
         return buildUser(username);
@@ -52,5 +53,4 @@ public class ApiUserDetailsService implements UserDetailsService {
                 true, true, true, true,
                 AuthorityUtils.commaSeparatedStringToAuthorityList("admin,ROLE_USER"));
     }
-
 }

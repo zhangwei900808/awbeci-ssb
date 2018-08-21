@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "ssb.security.oauth2.storeType",
+      "type": "java.lang.String",
+      "description": "Description for ssb.security.oauth2.storeType."
+    },
+    {
+      "name": "ssb.security.jwt.signingKey",
+      "type": "java.lang.String",
+      "description": "Description for ssb.security.jwt.signingKey."
+    }
+  ] }

@@ -1,4 +1,4 @@
-package com.awbeci.ssb.app.authentication;
+package com.awbeci.ssb.core.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Component("awbeciAuthenctiationFailureHandler")
-public class AwbeciAuthenctiationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
+@Component("ssbAuthenctiationFailureHandler")
+public class SsbAuthenctiationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
+
     @Autowired
     private ObjectMapper objectMapper;
 
