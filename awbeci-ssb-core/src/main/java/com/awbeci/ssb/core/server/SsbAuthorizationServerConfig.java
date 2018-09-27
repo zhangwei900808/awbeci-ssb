@@ -36,7 +36,6 @@ public class SsbAuthorizationServerConfig extends AuthorizationServerConfigurerA
     @Autowired(required = false)
     private TokenEnhancer jwtTokenEnhancer;
 
-
     @Autowired
     public SsbAuthorizationServerConfig(
 //            AuthenticationManager authenticationManager,

@@ -23,6 +23,7 @@ public class SsbJwtTokenEnhancer implements TokenEnhancer {
     public OAuth2AccessToken enhance(OAuth2AccessToken oAuth2AccessToken,
                                      OAuth2Authentication oAuth2Authentication) {
         Map<String, Object> info = jwtTokenEnhancerHandler.getInfoToToken();
+        //todo:判断info是否为空
         ((DefaultOAuth2AccessToken) oAuth2AccessToken).setAdditionalInformation(info);
         return oAuth2AccessToken;
     }

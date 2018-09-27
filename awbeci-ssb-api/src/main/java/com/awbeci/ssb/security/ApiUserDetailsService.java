@@ -18,8 +18,7 @@ import org.springframework.stereotype.Component;
  * 表单登录时需要
  */
 @Component
-public class ApiUserDetailsService implements UserDetailsService {
-//        , SocialUserDetailsService {
+public class ApiUserDetailsService implements UserDetailsService, SocialUserDetailsService {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -38,11 +37,10 @@ public class ApiUserDetailsService implements UserDetailsService {
         return buildUser(username);
     }
 
-//    @Override
-//    public SocialUserDetails loadUserByUserId(String userId) throws UsernameNotFoundException {
-//        logger.info("设计登录用户Id:" + userId);
-//        return buildUser(userId);
-//    }
+    public SocialUserDetails loadUserByUserId(String userId) throws UsernameNotFoundException {
+        logger.info("设计登录用户Id:" + userId);
+        return buildUser(userId);
+    }
 
     private SocialUser buildUser(String userId) {
         // 根据用户名查找用户信息

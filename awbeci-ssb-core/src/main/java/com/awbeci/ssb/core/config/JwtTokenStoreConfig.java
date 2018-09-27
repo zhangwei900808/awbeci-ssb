@@ -14,7 +14,7 @@ import org.springframework.util.StringUtils;
 @Configuration
 @ConditionalOnProperty(
         prefix = "ssb.security.oauth2",
-        name = "storeType", 
+        name = "storeType",
         havingValue = "jwt",
         matchIfMissing = true)
 public class JwtTokenStoreConfig {

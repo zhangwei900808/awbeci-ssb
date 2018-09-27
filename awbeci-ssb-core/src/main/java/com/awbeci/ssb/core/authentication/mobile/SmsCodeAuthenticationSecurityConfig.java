@@ -47,6 +47,5 @@ public class SmsCodeAuthenticationSecurityConfig extends SecurityConfigurerAdapt
         smsCodeDaoAuthenticationProvider.setUserDetailsService(userDetailsService);
         http.authenticationProvider(smsCodeDaoAuthenticationProvider)
                 .addFilterAfter(smsCodeAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
     }
 }

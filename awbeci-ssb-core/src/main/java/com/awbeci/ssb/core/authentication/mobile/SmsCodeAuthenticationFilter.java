@@ -32,6 +32,7 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
 
     /**
      * 添加未认证用户认证信息，然后在provider里面进行正式认证
+     *
      * @param httpServletRequest
      * @param httpServletResponse
      * @return
@@ -39,8 +40,7 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
      * @throws IOException
      * @throws ServletException
      */
-    public Authentication attemptAuthentication(HttpServletRequest httpServletRequest,
-                                                HttpServletResponse httpServletResponse)
+    public Authentication attemptAuthentication(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)
             throws AuthenticationException, IOException, ServletException {
         if (postOnly && !httpServletRequest.getMethod().equals("POST")) {
             throw new AuthenticationServiceException("Authentication method not supported: " + httpServletRequest.getMethod());
@@ -56,10 +56,8 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
         mobile = mobile.trim();
 
         SmsCodeAuthenticationToken authRequest = new SmsCodeAuthenticationToken(mobile, smsCode);
-
         // Allow subclasses to set the "details" property
         setDetails(httpServletRequest, authRequest);
-
         return this.getAuthenticationManager().authenticate(authRequest);
     }
 

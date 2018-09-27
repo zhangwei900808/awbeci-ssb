@@ -1,15 +1,15 @@
 package com.awbeci.ssb.core.server;
 
 import com.awbeci.ssb.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
+import com.awbeci.ssb.core.authentication.openId.OpenIdAuthenticationSecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.social.security.SpringSocialConfigurer;
 
 @Configuration
 @EnableResourceServer
@@ -24,8 +24,11 @@ public class SsbResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Autowired
     private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
 
-//    @Autowired
-//    private SpringSocialConfigurer awbeciSocialSecurityConfig;
+    @Autowired
+    private SpringSocialConfigurer awbeciSocialSecurityConfig;
+
+    @Autowired
+    private OpenIdAuthenticationSecurityConfig socialAuthenticationSecurityConfig;
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -46,12 +49,26 @@ public class SsbResourceServerConfig extends ResourceServerConfigurerAdapter {
                 // 手机验证码登录
                 .apply(smsCodeAuthenticationSecurityConfig)
                 .and()
-//                .apply(imoocSocialSecurityConfig)
-//                .and()
+                .apply(awbeciSocialSecurityConfig)
+                .and()
+                .apply(socialAuthenticationSecurityConfig)
+                .and()
                 .authorizeRequests()
                 //手机验证码登录地址
-                .antMatchers("/mobile/token")
+                .antMatchers("/mobile/token","/email/token","/social/openid")
                 .permitAll()
+                .and()
+                .authorizeRequests()
+                .antMatchers(
+                "/register",
+                "/social/**",
+                "/**/*.js",
+                "/**/*.css",
+                "/**/*.jpg",
+                "/**/*.png",
+                "/**/*.woff2",
+                "/code/image")
+                .permitAll()//以上的请求都不需要认证
                 .anyRequest()
                 .authenticated()
                 .and()

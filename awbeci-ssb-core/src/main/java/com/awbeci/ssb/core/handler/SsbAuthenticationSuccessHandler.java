@@ -82,11 +82,8 @@ public class SsbAuthenticationSuccessHandler extends SavedRequestAwareAuthentica
         } catch (IllegalArgumentException e) {
             throw new BadCredentialsException("Failed to decode basic authentication token");
         }
-
         String token = new String(decoded, "UTF-8");
-
         int delim = token.indexOf(":");
-
         if (delim == -1) {
             throw new BadCredentialsException("Invalid basic authentication token");
         }
