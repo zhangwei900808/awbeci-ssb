@@ -12,15 +12,12 @@ public class SmsCodeAuthenticationToken extends AbstractAuthenticationToken{
 
     // 用户信息全部放在这里面，如用户名，手机号，密码等
     private final Object principal;
-    //这里保存的是角色信息，如Role_user
+    //这里保存的证书信息，如密码，验证码等
     private Object credentials;
 
     //构造未认证之前用户信息
     SmsCodeAuthenticationToken(Object principal, Object credentials) {
         super(null);
-//        Map<String, String> map = new HashMap<String, String>();
-//        map.put("mobile",mobile);
-//        map.put("smsCode",smsCode);
         this.principal = principal;
         this.credentials = credentials;
         this.setAuthenticated(false);

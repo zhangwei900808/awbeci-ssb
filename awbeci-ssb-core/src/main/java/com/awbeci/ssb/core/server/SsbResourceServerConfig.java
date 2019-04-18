@@ -37,7 +37,7 @@ public class SsbResourceServerConfig extends ResourceServerConfigurerAdapter {
         // 所以在我们的app登录的时候我们只要提交的action，不要跳转到登录页
         http.formLogin()
                 //登录页面，app用不到
-                .loginPage("/authentication/login")
+                //.loginPage("/authentication/login")
                 //登录提交action，app会用到
                 // 用户名登录地址
                 .loginProcessingUrl("/form/token")
@@ -55,19 +55,19 @@ public class SsbResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 //手机验证码登录地址
-                .antMatchers("/mobile/token","/email/token","/social/openid")
+                .antMatchers("/mobile/token", "/email/token", "/social/openid")
                 .permitAll()
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                "/register",
-                "/social/**",
-                "/**/*.js",
-                "/**/*.css",
-                "/**/*.jpg",
-                "/**/*.png",
-                "/**/*.woff2",
-                "/code/image")
+                        "/register",
+                        "/social/**",
+                        "/**/*.js",
+                        "/**/*.css",
+                        "/**/*.jpg",
+                        "/**/*.png",
+                        "/**/*.woff2",
+                        "/code/image")
                 .permitAll()//以上的请求都不需要认证
                 .anyRequest()
                 .authenticated()

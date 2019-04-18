@@ -43,14 +43,15 @@ public class SsbAuthorizationServerConfig extends AuthorizationServerConfigurerA
             TokenStore redisTokenStore) {
 //        this.authenticationManager = authenticationManager;
         this.userDetailsService = userDetailsService;
-        this.redisTokenStore = redisTokenStore;
+//        this.redisTokenStore = redisTokenStore;
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 
         //使用Redis作为Token的存储
-        endpoints.tokenStore(redisTokenStore)
+        endpoints
+//                .tokenStore(redisTokenStore)
 //                .authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService);
 
